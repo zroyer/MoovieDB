@@ -5,6 +5,7 @@ import {
   Switch,
   Form,
   Input,
+  Icon,
   InputNumber,
   Select
 } from 'antd';
@@ -92,7 +93,7 @@ class MovieForm extends Component {
   render() {
     return (
       <div>
-        <Button type="primary" className='add' onClick={this.showModal}>Add Movie</Button>
+        <Button type="primary" className='add' onClick={this.showModal}>Add Movie<Icon type="plus" /></Button>
         <Modal
           title="Add Movie"
           visible={this.state.visible}

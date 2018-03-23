@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import './Header.css';
 import MovieForm from './MovieForm'
 import { NavLink } from 'react-router-dom'
-import { Menu, Dropdown, Icon } from 'antd';
+import { Menu, Dropdown, Icon, Button } from 'antd';
+
+const ButtonGroup = Button.Group;
 
 class Header extends Component {
 
@@ -17,15 +19,16 @@ class Header extends Component {
         </Menu.Item>
       </Menu>
     );
+
     return (
       <div className="Header">
         <header className="Header-header">
           <div className="Header-title">MoovieDB <span role='img'>🐮</span></div>
           <div className="header-btns">
             <MovieForm />
-            <Dropdown overlay={menu}>
+            <Dropdown overlay={menu} placement="bottomRight">
               <a className="ant-dropdown-link" href="#">
-                View <Icon type="down" />
+                <Button>View <Icon type="down" /></Button>
               </a>
             </Dropdown>
           </div>

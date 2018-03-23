@@ -13,12 +13,11 @@ class MovieList extends Component {
     .then(res => {
       this.setState({ data: res.data });
     })
-    console.log(this.state)
   }
 
   componentDidMount() {
     this.getMovies()
-    setInterval(this.getMovies, 2000);
+    setInterval(this.getMovies, 2000)
   }
 
   render() {
