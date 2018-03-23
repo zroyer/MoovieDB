@@ -29,11 +29,28 @@ router.get('/', function(req, res) {
 
 router.route('/movies')
   .get(function(req, res) {
-    Movie.find(function(err, movies) {
-      if (err)
-        res.send(err);
-      res.json(movies)
-    });
+    const param = req.query.q;
+    console.log(param)
+    if (req.query.q) {
+      Movie.find(
+        { $or:[
+          { "title": { "$regex": req.query.q, "$options": "i" } },
+          { "actors": { "$regex": req.query.q, "$options": "i" } },
+          { "genre": { "$regex": req.query.q, "$options": "i" } },
+          { "rating": { "$regex": req.query.q, "$options": "i" } },
+        ]},
+        function(err, movies) {
+          if (err)
+          res.send(err);
+          res.json(movies)
+        });
+    } else {
+      Movie.find(function(err, movies) {
+          if (err)
+          res.send(err);
+          res.json(movies)
+        });
+    }
   })
   .post(function(req, res) {
     let movie = new Movie();

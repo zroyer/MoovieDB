@@ -41,6 +41,7 @@ class MovieTable extends Component {
   }
 
   render() {
+    const { data } = this.state
     const columns = [{
       title: 'Title',
       dataIndex: 'title',
@@ -74,7 +75,7 @@ class MovieTable extends Component {
 
     return (
       <div className="movie-container">
-        <Table columns={columns} dataSource={this.state.data} pagination={false} rowKey='_id'/>
+        <Table columns={columns} dataSource={data} pagination={false} rowKey='_id'/>
       </div>
     )
   }
