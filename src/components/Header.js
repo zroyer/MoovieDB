@@ -6,7 +6,7 @@ class Header extends Component {
     return (
       <div className="Header">
         <header className="Header-header">
-          <div className="Header-title">MoovieDB <span>🐮</span></div>
+          <div className="Header-title">MoovieDB <span role='img'>🐮</span></div>
         </header>
       </div>
     );
