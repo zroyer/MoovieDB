@@ -35,6 +35,20 @@ router.route('/movies')
       res.json(movies)
     });
   })
+  .post(function(req, res) {
+    let movie = new Movie();
+    movie.title = req.body.title;
+    movie.year = req.body.year;
+    movie.actors = req.body.actors;
+    movie.genre = req.body.genre;
+    movie.rating = req.body.rating;
+
+    movie.save(function(err) {
+      if (err)
+        res.send(err);
+      res.json({ message: 'Movie successfully added!' });
+    });
+  });
 
 app.use('/api', router);
 
