@@ -1,17 +1,32 @@
-import React, { Component } from 'react';
-import Movie from './Movie';
+import React, { Component } from 'react'
+import Movie from './Movie'
+import axios from 'axios'
 
 class MovieList extends Component {
-  render() {
-    let movieSlot = this.props.data && this.props.data.map(movie => {
-      return (
-        <Movie title={ movie.title } />
-      )
+  constructor(props) {
+    super(props);
+    this.state = { data: [] };
+  }
+
+  getMovies = () => {
+    axios.get('http://localhost:1738/api/movies')
+    .then(res => {
+      this.setState({ data: res.data });
     })
+    console.log(this.state)
+  }
+
+  componentDidMount() {
+    this.getMovies()
+    setInterval(this.getMovies, 2000);
+  }
+
+  render() {
     return (
-      <div>
-        <div>Movie List</div>
-        { movieSlot }
+      <div className="movie-list">
+        {this.state.data.map((movie, idx) => (
+          <div>{movie.title}</div>
+        ))}
       </div>
     )
   }

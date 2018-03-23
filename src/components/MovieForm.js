@@ -9,6 +9,7 @@ import {
   Select
 } from 'antd';
 import './Movie.css';
+import axios from 'axios'
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -18,10 +19,10 @@ class MovieForm extends Component {
     super(props);
     this.state = {
       title: '',
-      year: 2018,
       actors: '',
       genre: '',
       rating: '',
+      year: 2018,
       visible: false
     };
   }
@@ -42,21 +43,50 @@ class MovieForm extends Component {
   handleTitleChange = (e) => {
     this.setState({ title: e.target.value });
   }
+
   handleYearChange = (value) => {
     this.setState({ year: value });
   }
+
   handleActorsChange = (e) => {
     this.setState({ actors: e.target.value });
   }
+
   handleGenreChange = (value) => {
     this.setState({ genre: value });
   }
+
   handleRatingChange = (value) => {
     this.setState({ rating: value });
   }
+
   handleSubmit = (e) => {
     e.preventDefault();
     console.log(this.state)
+
+    this.postMovie({
+      title: this.state.title,
+      actors: this.state.actors,
+      genre: this.state.genre,
+      rating: this.state.rating,
+      year: this.state.year,
+    })
+
+    this.setState({
+      title: '',
+      year: 2018,
+      actors: '',
+      genre: '',
+      rating: '',
+      visible: false
+    });
+  }
+
+  postMovie = (movie) => {
+    axios.post('http://localhost:1738/api/movies', movie)
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   render() {
