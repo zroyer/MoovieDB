@@ -1,5 +1,19 @@
 @import '~antd/dist/antd.css';
 
 .movie-container {
-  padding: 1rem 3rem;
+  padding: 1rem 2rem;
+}
+
+.search-container {
+
+}
+
+.search-input {
+  margin: 1rem;
+}
+
+.movie-grid {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }

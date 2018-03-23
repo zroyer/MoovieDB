@@ -18,8 +18,15 @@
   font-size: 2em;
 }
 
-.Header-intro {
-  font-size: large;
+.Header-title-link {
+  color: white;
+}
+
+.Header-title-link:active,
+.Header-title-link:focus,
+.Header-title-link:hover {
+  color: white;
+  text-decoration: none;
 }
 
 .header-btns {

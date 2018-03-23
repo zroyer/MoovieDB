@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
+import { Card } from 'antd';
 
 class Movie extends Component {
+
   render() {
+    let { title, actors, genre, rating, year } = this.props
+
     return (
-      <div>
-        <h3>{this.props.title}</h3>
-      </div>
+      <Card title={`${title} (${year})`}
+        style={{ width: 320, margin: '1rem' }}>
+        <p><label>Actors: </label>{actors}</p>
+        <p><label>Genre: </label>{genre}</p>
+        <p><label>Rating: </label>{rating}</p>
+      </Card>
     )
   }
 }

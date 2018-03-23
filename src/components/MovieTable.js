@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import Movie from './Movie'
 import axios from 'axios'
-import { Table, Divider, Icon } from 'antd'
+import { Table, Icon } from 'antd'
 
 const API_URL = 'http://localhost:1738/api/movies'
+const emptyData = `No movies to display... Hit that blue button up there to get started! 🤜🔵`
 
 class MovieTable extends Component {
 
@@ -14,7 +14,10 @@ class MovieTable extends Component {
 
   componentDidMount() {
     this.getMovies()
-    setInterval(this.getMovies, 1000)
+  }
+
+  componentDidUpdate() {
+    this.getMovies()
   }
 
   getMovies = () => {
@@ -22,7 +25,6 @@ class MovieTable extends Component {
     .then(res => {
       this.setState({ data: res.data });
     })
-    console.log(this.state)
   }
 
   handleDelete = (e, id) => {
@@ -68,14 +70,19 @@ class MovieTable extends Component {
       key: '_id',
       render: (key) => (
        <span>
-         <a href="#" onClick={(e) => this.handleDelete(e, key)}><Icon type="delete" /></a>
+         <a onClick={(e) => this.handleDelete(e, key)}><Icon type="delete" /></a>
        </span>
      ),
     }];
 
     return (
       <div className="movie-container">
-        <Table columns={columns} dataSource={data} pagination={false} rowKey='_id'/>
+        <Table
+          columns={columns}
+          dataSource={data}
+          pagination={false}
+          rowKey='_id'
+          locale={{emptyText: emptyData}} />
       </div>
     )
   }
