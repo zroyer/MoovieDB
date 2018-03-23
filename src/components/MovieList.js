@@ -10,6 +10,7 @@ class MovieList extends Component {
     })
     return (
       <div>
+        <div>Movie List</div>
         { movieSlot }
       </div>
     )

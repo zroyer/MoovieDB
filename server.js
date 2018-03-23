@@ -46,9 +46,18 @@ router.route('/movies')
     movie.save(function(err) {
       if (err)
         res.send(err);
-      res.json({ message: 'Movie successfully added!' });
+      res.json({ message: 'Movie posted 📼' });
     });
   });
+
+router.route('/movies/:movie_id')
+ .delete(function(req, res) {
+   Movie.remove({ _id: req.params.movie_id }, function(err, movie) {
+     if (err)
+       res.send(err);
+     res.json({ message: 'Movie deleted 👋' })
+   })
+ });
 
 app.use('/api', router);
 

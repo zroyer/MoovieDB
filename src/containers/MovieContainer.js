@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import MovieList from '../components/MovieList';
-import MovieForm from '../components/MovieForm';
+import React, { Component } from 'react'
+import MovieList from '../components/MovieList'
+import MovieForm from '../components/MovieForm'
 
 class MovieContainer extends Component {
   constructor(props) {
