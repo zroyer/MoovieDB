@@ -27,6 +27,15 @@ router.get('/', function(req, res) {
   res.json({ message: 'bueno 👌'});
 });
 
+router.route('/movies')
+  .get(function(req, res) {
+    Movie.find(function(err, movies) {
+      if (err)
+        res.send(err);
+      res.json(movies)
+    });
+  })
+
 app.use('/api', router);
 
 app.listen(port, function() {
