@@ -2,7 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
+const Movie = require('./model/movies');
 const app = express();
 const router = express.Router();
 const port = process.env.API_PORT || 1738;
