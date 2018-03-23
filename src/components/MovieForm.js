@@ -1,31 +1,58 @@
 import React, { Component } from 'react';
+import {
+  Modal,
+  Button,
+  Switch,
+  Form,
+  Input,
+  InputNumber,
+  Select
+} from 'antd';
+import './Movie.css';
+
+const FormItem = Form.Item;
+const Option = Select.Option;
 
 class MovieForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: '',
-      year: '',
+      year: 2018,
       actors: '',
       genre: '',
-      rating: ''
+      rating: '',
+      visible: false
     };
+  }
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  }
+
+  handleCancel = (e) => {
+    console.log(e);
+    this.setState({
+      visible: false,
+    });
   }
 
   handleTitleChange = (e) => {
     this.setState({ title: e.target.value });
   }
-  handleYearChange = (e) => {
-    this.setState({ year: e.target.value });
+  handleYearChange = (value) => {
+    this.setState({ year: value });
   }
   handleActorsChange = (e) => {
     this.setState({ actors: e.target.value });
   }
-  handleGenreChange = (e) => {
-    this.setState({ genre: e.target.value });
+  handleGenreChange = (value) => {
+    this.setState({ genre: value });
   }
-  handleRatingChange = (e) => {
-    this.setState({ rating: e.target.value });
+  handleRatingChange = (value) => {
+    this.setState({ rating: value });
   }
   handleSubmit = (e) => {
     e.preventDefault();
@@ -34,36 +61,59 @@ class MovieForm extends Component {
 
   render() {
     return (
-      <form onSubmit={ this.handleSubmit }>
-        <input
-          type='text'
-          placeholder='Title'
-          value={ this.state.title }
-          onChange={ this.handleTitleChange } />
-        <input
-          type='text'
-          placeholder='Year'
-          value={ this.state.year }
-          onChange={ this.handleYearChange } />
-        <input
-          type='text'
-          placeholder='Actors'
-          value={ this.state.actors }
-          onChange={ this.handleActorsChange } />
-        <input
-          type='text'
-          placeholder='Genre'
-          value={ this.state.genre }
-          onChange={ this.handleGenreChange } />
-        <input
-          type='text'
-          placeholder='Rating'
-          value={ this.state.rating }
-          onChange={ this.handleRatingChange } />
-        <input
-          type='submit'
-          value='Post' />
-      </form>
+      <div>
+        <Button type="primary" className='add' onClick={this.showModal}>Add Movie</Button>
+        <Modal
+          title="Add Movie"
+          visible={this.state.visible}
+          onOk={this.handleSubmit}
+          onCancel={this.handleCancel}
+        >
+          <Form
+            onSubmit={ this.handleSubmit }
+            layout='vertical'>
+            <FormItem label='Title'>
+              <Input
+                type='text'
+                value={ this.state.title }
+                onChange={ this.handleTitleChange } />
+            </FormItem>
+            <FormItem label='Actors'>
+              <Input
+                type='text'
+                value={ this.state.actors }
+                onChange={ this.handleActorsChange } />
+            </FormItem>
+            <FormItem label='Genre'>
+              <Select placeholder='Please select...' style={{ width: 220 }} onChange={this.handleGenreChange}>
+                <Option value="Action">Action</Option>
+                <Option value="Comedy">Comedy</Option>
+                <Option value="Thriller">Thriller</Option>
+                <Option value="Horror">Horror</Option>
+                <Option value="Western">Western</Option>
+                <Option value="Science Fiction">Science Fiction</Option>
+                <Option value="Mystery">Mystery</Option>
+              </Select>
+            </FormItem>
+            <FormItem label='Rating'>
+              <Select placeholder='Please select...' style={{ width: 220 }} onChange={this.handleRatingChange}>
+                <Option value="G">G</Option>
+                <Option value="PG">PG</Option>
+                <Option value="PG-13">PG-13</Option>
+                <Option value="R">R</Option>
+              </Select>
+            </FormItem>
+            <FormItem label='Year'>
+              <InputNumber
+                min={1900}
+                max={2018}
+                defaultValie={this.state.year}
+                value={ this.state.year }
+                onChange={ this.handleYearChange } />
+            </FormItem>
+          </Form>
+        </Modal>
+      </div>
     )
   }
 }

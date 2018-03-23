@@ -1,0 +1,5 @@
+@import '~antd/dist/antd.css';
+
+#components-form-demo-normal-login .login-form {
+  max-width: 220px;
+}

@@ -1,3 +1,5 @@
+@import '~antd/dist/antd.css';
+
 .Header {
   text-align: center;
 }
@@ -7,8 +9,9 @@
   height: 70px;
   color: white;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 3rem;
 }
 
 .Header-title {
@@ -17,4 +20,14 @@
 
 .Header-intro {
   font-size: large;
+}
+
+.header-btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.add {
+  margin: 0 2rem;
 }
