@@ -28,7 +28,7 @@ class Header extends Component {
             <MovieForm />
             <Dropdown overlay={menu} placement="bottomRight">
               <a className="ant-dropdown-link" href="#">
-                <Button>View <Icon type="down" /></Button>
+                <Button>View<Icon type="down" /></Button>
               </a>
             </Dropdown>
           </div>

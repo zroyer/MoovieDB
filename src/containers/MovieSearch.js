@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import MovieList from '../components/MovieList'
+import MovieTable from '../components/MovieTable'
 import MovieForm from '../components/MovieForm'
 
 class MovieContainer extends Component {
