@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Movie from '../components/Movie'
-import axios from 'axios'
 import { deleteMovie, getQueriedMovies } from '../helpers'
 import { Input } from 'antd'
 const Search = Input.Search

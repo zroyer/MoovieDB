@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import { Table, Icon } from 'antd'
 import { deleteMovie, getMovies } from '../helpers'
 
@@ -8,8 +7,8 @@ const emptyData = `No movies to display... Hit that blue button up there to get 
 class MovieTable extends Component {
 
   constructor(props) {
-    super(props);
-    this.state = { data: [] };
+    super(props)
+    this.state = { data: [] }
   }
 
   componentDidMount() {
@@ -18,7 +17,16 @@ class MovieTable extends Component {
       })
       .catch(error => {
         console.log(error)
-      });
+      })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    getMovies().then(res => {
+        this.setState({ data: res.data })
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   handleDelete = (e, id) => {
@@ -27,6 +35,7 @@ class MovieTable extends Component {
   }
 
   render() {
+    console.log('render')
     const { data } = this.state
     const columns = [{
       title: 'Title',
