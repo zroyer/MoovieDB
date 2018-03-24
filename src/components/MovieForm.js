@@ -9,7 +9,7 @@ import {
   Select
 } from 'antd';
 import './Movie.css';
-import axios from 'axios'
+import { postMovie } from '../helpers'
 
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -62,9 +62,8 @@ class MovieForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state)
 
-    this.postMovie({
+    postMovie({
       title: this.state.title,
       actors: this.state.actors,
       genre: this.state.genre,
@@ -80,13 +79,6 @@ class MovieForm extends Component {
       rating: '',
       visible: false
     });
-  }
-
-  postMovie = (movie) => {
-    axios.post('http://localhost:1738/api/movies', movie)
-      .catch(err => {
-        console.error(err);
-      });
   }
 
   render() {

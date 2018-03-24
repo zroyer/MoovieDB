@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Table, Icon } from 'antd'
-
+import { deleteMovie, getMovies } from '../helpers'
 const API_URL = 'http://localhost:1738/api/movies'
 const emptyData = `No movies to display... Hit that blue button up there to get started! 🤜🔵`
 
@@ -29,17 +29,7 @@ class MovieTable extends Component {
 
   handleDelete = (e, id) => {
     e.preventDefault()
-    this.deleteMovie(id)
-  }
-
-  deleteMovie = (id) => {
-    axios.delete(`${API_URL}/${id}`)
-      .then(res => {
-        console.log('Movie deleted!');
-      })
-      .catch(err => {
-        console.error(err);
-      });
+    deleteMovie(id)
   }
 
   render() {
