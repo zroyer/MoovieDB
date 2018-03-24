@@ -30,7 +30,6 @@ router.get('/', function(req, res) {
 router.route('/movies')
   .get(function(req, res) {
     const param = req.query.q;
-    console.log(param)
     if (req.query.q) {
       Movie.find(
         { $or:[

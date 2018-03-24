@@ -2,10 +2,11 @@ import axios from 'axios'
 const API_URL = 'http://localhost:1738/api/movies'
 
 export const getMovies = () => {
-  axios.get(API_URL)
-  .then(res => {
-    return res.data
-  })
+  return axios.get(API_URL)
+}
+
+export const getQueriedMovies = (query) => {
+  return axios.get(`${API_URL}?q=${query}`)
 }
 
 export const postMovie = (movie) => {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Table, Icon } from 'antd'
 import { deleteMovie, getMovies } from '../helpers'
-const API_URL = 'http://localhost:1738/api/movies'
+
 const emptyData = `No movies to display... Hit that blue button up there to get started! 🤜🔵`
 
 class MovieTable extends Component {
@@ -13,18 +13,12 @@ class MovieTable extends Component {
   }
 
   componentDidMount() {
-    this.getMovies()
-  }
-
-  componentDidUpdate() {
-    this.getMovies()
-  }
-
-  getMovies = () => {
-    axios.get(API_URL)
-    .then(res => {
-      this.setState({ data: res.data });
-    })
+    getMovies().then(res => {
+        this.setState({ data: res.data })
+      })
+      .catch(error => {
+        console.log(error)
+      });
   }
 
   handleDelete = (e, id) => {
