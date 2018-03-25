@@ -15,13 +15,13 @@
 ## Tech Stack
 - [Node.js](https://github.com/nodejs/node): JS runtime for executing my server-side code.
 - [Express.js](https://github.com/expressjs/express): Tooling for my HTTP server.
-- [body-parser](https://github.com/expressjs/body-parser): Parses incoming request bodies in a middleware before it reaches handlers
-
+- [body-parser](https://github.com/expressjs/body-parser): Parses incoming request bodies in a middleware before it reaches handlers.
+---
 - [MongoDB](https://www.mongodb.com/): The data wasn't too structured, and the required queries were very simple, so it made more sense to use a document-oriented database like MongoDB for an application like this.
 - [Mongoose](https://github.com/Automattic/mongoose): Schema-based solution used to model application data, used in conjunction with MongoDB.
-- [MLab](https://mlab.com/)(MongoDB): Database-as-a-Service for MongoDB. I chose to use MLab because of the low size of the data and to simplify the review process.
-
+- [MLab](https://mlab.com/): Database-as-a-Service for MongoDB. I chose to use MLab because of the low size of the data and to simplify the review process.
+---
 - [React](https://github.com/facebook/react): Used for building the client-side component-based user interface.
 - [Axios](https://www.npmjs.com/package/axios): Used for client-side HTTP requests to the server.
 - [react-router](https://github.com/ReactTraining/react-router): Client-side routing for React to keep that SPA feel.
-- [Ant.design](https://ant.design/): My go-to React UI kit.
+- [Ant.design](https://ant.design/): My go-to React UI kit. I love the simple and clean components in this kit.
