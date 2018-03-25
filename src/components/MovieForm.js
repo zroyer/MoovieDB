@@ -106,7 +106,7 @@ class MovieForm extends Component {
                 onChange={ this.handleActorsChange } />
             </FormItem>
             <FormItem label='Genre'>
-              <Select placeholder='Please select...' style={{ width: 220 }} onChange={this.handleGenreChange}>
+              <Select placeholder='Please select...' style={{ width: 220 }} value={ this.state.genre } onChange={this.handleGenreChange}>
                 <Option value="Action">Action</Option>
                 <Option value="Comedy">Comedy</Option>
                 <Option value="Thriller">Thriller</Option>
@@ -117,7 +117,7 @@ class MovieForm extends Component {
               </Select>
             </FormItem>
             <FormItem label='Rating'>
-              <Select placeholder='Please select...' style={{ width: 220 }} onChange={this.handleRatingChange}>
+              <Select placeholder='Please select...' style={{ width: 220 }} value={ this.state.rating } onChange={this.handleRatingChange}>
                 <Option value="G">G</Option>
                 <Option value="PG">PG</Option>
                 <Option value="PG-13">PG-13</Option>
