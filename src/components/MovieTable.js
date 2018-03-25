@@ -8,12 +8,12 @@ class MovieTable extends Component {
 
   constructor(props) {
     super(props)
-    this.state = { data: [] }
+    this.state = { movies: [] }
   }
 
   componentDidMount() {
     getMovies().then(res => {
-        this.setState({ data: res.data })
+        this.setState({ movies: res.data })
       })
       .catch(error => {
         console.log(error)
@@ -22,7 +22,7 @@ class MovieTable extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     getMovies().then(res => {
-        this.setState({ data: res.data })
+        this.setState({ movies: res.data })
       })
       .catch(error => {
         console.log(error)
@@ -36,7 +36,7 @@ class MovieTable extends Component {
 
   render() {
     console.log('render')
-    const { data } = this.state
+    const { movies } = this.state
     const columns = [{
       title: 'Title',
       dataIndex: 'title',
@@ -72,7 +72,7 @@ class MovieTable extends Component {
       <div className="movie-container">
         <Table
           columns={columns}
-          dataSource={data}
+          dataSource={movies}
           pagination={false}
           rowKey='_id'
           locale={{emptyText: emptyData}} />

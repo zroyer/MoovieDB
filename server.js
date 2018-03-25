@@ -46,7 +46,7 @@ router.route('/movies')
     } else {
       Movie.find(function(err, movies) {
           if (err)
-          res.send(err);
+            res.send(err);
           res.json(movies)
         });
     }

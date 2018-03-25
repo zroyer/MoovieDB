@@ -7,7 +7,7 @@ const Search = Input.Search
 class MovieSearch extends Component {
   state = {
     query: '',
-    data: []
+    movies: []
   }
 
   handleInputChange = (e) => {
@@ -16,13 +16,13 @@ class MovieSearch extends Component {
     }, () => {
       if (this.state.query.length > 0) {
         getQueriedMovies(this.state.query).then(res => {
-            this.setState({ data: res.data })
+            this.setState({ movies: res.data })
           })
           .catch(error => {
             console.log(error)
           });
       } else if (this.state.query.length === 0) {
-        this.setState({query: '', data: []})
+        this.setState({query: '', movies: []})
       }
     })
   }
@@ -45,7 +45,7 @@ class MovieSearch extends Component {
           />
         </div>
         <div className='movie-grid'>
-          {this.state.data && this.state.data.map((movie) => (
+          {this.state.movies && this.state.movies.map((movie) => (
             <Movie
               title={movie.title}
               actors={movie.actors}
