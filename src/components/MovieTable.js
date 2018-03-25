@@ -44,21 +44,21 @@ class MovieTable extends Component {
       key: 'title',
       sorter: (a, b) => { return a.title.localeCompare(b.title)},
     }, {
-      title: 'Actors',
-      dataIndex: 'actors',
-      key: 'actors',
-    }, {
-      title: 'Genre',
-      dataIndex: 'genre',
-      key: 'genre',
+      title: 'Year',
+      dataIndex: 'year',
+      key: 'year',
     }, {
       title: 'Rating',
       dataIndex: 'rating',
       key: 'rating',
     }, {
-      title: 'Year',
-      dataIndex: 'year',
-      key: 'year',
+      title: 'Genre',
+      dataIndex: 'genre',
+      key: 'genre',
+    }, {
+      title: 'Actors',
+      dataIndex: 'actors',
+      key: 'actors',
     }, {
       title: 'Delete?',
       dataIndex: '_id',
