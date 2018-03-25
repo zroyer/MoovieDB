@@ -9,6 +9,7 @@ class MovieTable extends Component {
   constructor(props) {
     super(props)
     this.state = { movies: [] }
+    console.log(props)
   }
 
   componentDidMount() {
