@@ -10,18 +10,15 @@ export const getQueriedMovies = (query) => {
 }
 
 export const postMovie = (movie) => {
-  axios.post(API_URL, movie)
-    .catch(err => {
-      console.error(err);
-    });
+  return axios.post(API_URL, movie)
+  .then((response) => {
+    return axios.get(API_URL)
+  })
 }
 
 export const deleteMovie = (id) => {
-  axios.delete(`${API_URL}/${id}`)
-    .then(res => {
-      console.log('Movie deleted!');
-    })
-    .catch(err => {
-      console.error(err);
-    });
+  return axios.delete(`${API_URL}/${id}`)
+  .then((response) => {
+    return axios.get(API_URL)
+  })
 }

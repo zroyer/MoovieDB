@@ -12,59 +12,36 @@ class MovieTable extends Component {
     console.log(props)
   }
 
-  componentDidMount() {
-    getMovies().then(res => {
-        this.setState({ movies: res.data })
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    getMovies().then(res => {
-        this.setState({ movies: res.data })
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-
-  handleDelete = (e, id) => {
-    e.preventDefault()
-    deleteMovie(id)
-  }
-
   render() {
-    console.log('render')
-    const { movies } = this.state
+    const { movies } = this.props
     const columns = [{
       title: 'Title',
       dataIndex: 'title',
       key: 'title',
+      sorter: (a, b) => { return a.title.localeCompare(b.title)},
     }, {
-      title: 'Actors',
-      dataIndex: 'actors',
-      key: 'actors',
-    }, {
-      title: 'Genre',
-      dataIndex: 'genre',
-      key: 'genre',
+      title: 'Year',
+      dataIndex: 'year',
+      key: 'year',
     }, {
       title: 'Rating',
       dataIndex: 'rating',
       key: 'rating',
     }, {
-      title: 'Year',
-      dataIndex: 'year',
-      key: 'year',
+      title: 'Genre',
+      dataIndex: 'genre',
+      key: 'genre',
+    }, {
+      title: 'Actors',
+      dataIndex: 'actors',
+      key: 'actors',
     }, {
       title: 'Delete?',
       dataIndex: '_id',
       key: '_id',
       render: (key) => (
        <span>
-         <a onClick={(e) => this.handleDelete(e, key)}><Icon type="delete" /></a>
+         <a onClick={(e) => this.props.handleDelete(e, key)}><Icon type="delete" /></a>
        </span>
      ),
     }];

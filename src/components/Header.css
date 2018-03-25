@@ -18,6 +18,12 @@
   font-size: 2em;
 }
 
+@media (max-width: 600px) {
+  .Header-title {
+    display: none;
+  }
+}
+
 .Header-title-link {
   color: white;
 }
@@ -27,14 +33,4 @@
 .Header-title-link:hover {
   color: white;
   text-decoration: none;
-}
-
-.header-btns {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.add {
-  margin: 0 1rem;
 }
