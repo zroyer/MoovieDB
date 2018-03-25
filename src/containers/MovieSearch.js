@@ -41,7 +41,8 @@ class MovieSearch extends Component {
             placeholder='Search for a movie...'
             ref={input => this.search = input}
             onChange={this.handleInputChange}
-            style={{ width: 320 }}
+            style={{ width: 400 }}
+            size="large"
           />
         </div>
         <div className='movie-grid'>

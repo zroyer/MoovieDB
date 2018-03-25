@@ -109,11 +109,11 @@ class MovieForm extends Component {
               <Select placeholder='Please select...' style={{ width: 220 }} value={ this.state.genre } onChange={this.handleGenreChange}>
                 <Option value="Action">Action</Option>
                 <Option value="Comedy">Comedy</Option>
-                <Option value="Thriller">Thriller</Option>
+                <Option value="Drama">Drama</Option>
                 <Option value="Horror">Horror</Option>
-                <Option value="Western">Western</Option>
-                <Option value="Science Fiction">Science Fiction</Option>
                 <Option value="Mystery">Mystery</Option>
+                <Option value="Science Fiction">Sci-Fi</Option>
+                <Option value="Thriller">Thriller</Option>
               </Select>
             </FormItem>
             <FormItem label='Rating'>

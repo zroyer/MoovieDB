@@ -21,17 +21,15 @@ class Header extends Component {
     return (
       <div className="Header">
         <header className="Header-header">
+          <MovieForm />
           <Link to={`/`} className="Header-title-link">
             <div className="Header-title">MoovieDB <span role='img' aria-label='cow'>🐮</span></div>
           </Link>
-          <div className="header-btns">
-            <MovieForm />
-            <Dropdown overlay={menu} placement="bottomRight">
-              <a className="ant-dropdown-link">
-                <Button>View<Icon type="down" /></Button>
-              </a>
-            </Dropdown>
-          </div>
+          <Dropdown overlay={menu} placement="bottomRight">
+            <a className="ant-dropdown-link">
+              <Button>View<Icon type="down" /></Button>
+            </a>
+          </Dropdown>
         </header>
       </div>
     );
