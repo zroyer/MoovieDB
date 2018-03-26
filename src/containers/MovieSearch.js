@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Movie from '../components/Movie'
 import Header from '../components/Header'
-import { deleteMovie, getQueriedMovies } from '../helpers'
+import { postMovie, deleteMovie, getQueriedMovies } from '../helpers'
 import { Input } from 'antd'
 const Search = Input.Search
 
@@ -21,22 +21,42 @@ class MovieSearch extends Component {
           })
           .catch(error => {
             console.log(error)
-          });
+          })
       } else if (this.state.query.length === 0) {
         this.setState({query: '', movies: []})
       }
     })
   }
 
+  handleAdd = (movie) => {
+    postMovie({
+      title: movie.title,
+      actors: movie.actors,
+      genre: movie.genre,
+      rating: movie.rating,
+      year: movie.year,
+    }).then(res => {
+        this.setState({ movies: res.data })
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
   handleDelete = (e, id) => {
     e.preventDefault()
-    deleteMovie(id)
+    deleteMovie(id).then(res => {
+        this.setState({ movies: res.data })
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   render() {
     return (
       <React.Fragment>
-        <Header />
+        <Header handleAdd={this.handleAdd}/>
         <div className='movie-container'>
           <div className='search-container'>
             <Search
@@ -48,19 +68,35 @@ class MovieSearch extends Component {
               size="large"
             />
           </div>
-          <div className='movie-grid'>
-            {this.state.movies && this.state.movies.map((movie) => (
-              <Movie
-                title={movie.title}
-                actors={movie.actors}
-                genre={movie.genre}
-                rating={movie.rating}
-                year={movie.year}
-                id={movie._id}
-                key={movie._id}
-                handleDelete={this.handleDelete}/>
-            ))}
-          </div>
+          {(this.state.query.length === 0) ? (
+            <div className='prompt'>
+              <div>
+                <span role='img' className='point' aria-label='point'>☝️</span>
+                &nbsp;&nbsp;Start searching!
+              </div>
+            </div>
+          ) : (this.state.movies.length === 0) ? (
+            <div className='prompt'>
+              <div>
+                <span role='img' className='point' aria-label='point'>🙅‍</span>
+                &nbsp;&nbsp;No results!
+              </div>
+            </div>
+          ) : (
+            <div className='movie-grid'>
+              {this.state.movies.map((movie) => (
+                <Movie
+                  title={movie.title}
+                  actors={movie.actors}
+                  genre={movie.genre}
+                  rating={movie.rating}
+                  year={movie.year}
+                  id={movie._id}
+                  key={movie._id}
+                  handleDelete={this.handleDelete}/>
+                ))}
+            </div>
+          )}
         </div>
       </React.Fragment>
     )

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Table, Icon } from 'antd'
-import { deleteMovie, getMovies } from '../helpers'
 
 const emptyData = `No movies to display... Hit that blue button up there to get started! 🤜🔵`
 
@@ -9,7 +8,6 @@ class MovieTable extends Component {
   constructor(props) {
     super(props)
     this.state = { movies: [] }
-    console.log(props)
   }
 
   render() {
@@ -18,19 +16,22 @@ class MovieTable extends Component {
       title: 'Title',
       dataIndex: 'title',
       key: 'title',
-      sorter: (a, b) => { return a.title.localeCompare(b.title)},
+      sorter: (a, b) => { return b.title.localeCompare(a.title)},
     }, {
       title: 'Year',
       dataIndex: 'year',
       key: 'year',
+      sorter: (a, b) => a.year - b.year,
     }, {
       title: 'Rating',
       dataIndex: 'rating',
       key: 'rating',
+      sorter: (a, b) => { return b.rating.localeCompare(a.rating)},
     }, {
       title: 'Genre',
       dataIndex: 'genre',
       key: 'genre',
+      sorter: (a, b) => { return b.genre.localeCompare(a.genre)},
     }, {
       title: 'Actors',
       dataIndex: 'actors',
@@ -41,13 +42,13 @@ class MovieTable extends Component {
       key: '_id',
       render: (key) => (
        <span>
-         <a onClick={(e) => this.props.handleDelete(e, key)}><Icon type="delete" /></a>
+         <a onClick={(e) => this.props.handleDelete(e, key)}><Icon type='delete' /></a>
        </span>
      ),
-    }];
+    }]
 
     return (
-      <div className="movie-container">
+      <div className='movie-container'>
         <Table
           columns={columns}
           dataSource={movies}

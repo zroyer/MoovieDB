@@ -16,7 +16,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "npm run generateTests && jest",
+    "eject": "react-scripts eject",
+    "generateTests": "react-snapshot-test-generator"
+  },
+  "devDependencies": {
+    "react-snapshot-test-generator": "^1.1.0"
   }
 }

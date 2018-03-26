@@ -2,11 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './index.css'
-import Header from './components/Header'
 import MovieSearch from './containers/MovieSearch'
 import MovieContainer from './containers/MovieContainer'
-import MovieTable from './components/MovieTable'
-import NotFound from './components/NotFound'
+import NotFound from './containers/NotFound'
 import registerServiceWorker from './registerServiceWorker'
 
 ReactDOM.render(

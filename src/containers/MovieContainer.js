@@ -1,16 +1,13 @@
 import React, { Component } from 'react'
-import { Table, Icon } from 'antd'
 import { deleteMovie, getMovies, postMovie } from '../helpers'
 import Header from '../components/Header'
 import MovieTable from '../components/MovieTable'
-
 
 class MovieContainer extends Component {
 
   constructor(props) {
     super(props)
     this.state = { movies: [] }
-    console.log(props)
   }
 
   componentDidMount() {
@@ -48,9 +45,7 @@ class MovieContainer extends Component {
   }
 
   render() {
-    console.log('render')
     const { movies } = this.state
-
     return (
       <React.Fragment>
         <Header handleAdd={this.handleAdd}/>

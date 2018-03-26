@@ -6,16 +6,23 @@
 
 .Header-header {
   background-color: LIGHTSALMON;
-  height: 70px;
+  height: 5em;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 3rem;
+  padding: 0 3em;
 }
 
 .Header-title {
   font-size: 2em;
+  display: flex;
+  align-items: center;
+}
+
+.cow {
+  font-size: 3rem;
+  padding: 0 0 0 0.25em;
 }
 
 @media (max-width: 600px) {
