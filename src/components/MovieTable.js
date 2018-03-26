@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Table, Icon } from 'antd'
 import { deleteMovie, getMovies } from '../helpers'
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import { fetchMovies} from '../actions/actions';
 
 const emptyData = `No movies to display... Hit that blue button up there to get started! 🤜🔵`
 
@@ -9,25 +12,15 @@ class MovieTable extends Component {
   constructor(props) {
     super(props)
     this.state = { movies: [] }
-    console.log(props)
+
   }
 
   componentDidMount() {
-    getMovies().then(res => {
-        this.setState({ movies: res.data })
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    // this.props.doFetchMovies()
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    getMovies().then(res => {
-        this.setState({ movies: res.data })
-      })
-      .catch(error => {
-        console.log(error)
-      })
+  componentWillMount() {
+    //etchMovies()
   }
 
   handleDelete = (e, id) => {
@@ -36,8 +29,10 @@ class MovieTable extends Component {
   }
 
   render() {
-    console.log('render')
+    console.log(this.props)
+    console.log(this.state)
     const { movies } = this.state
+
     const columns = [{
       title: 'Title',
       dataIndex: 'title',
@@ -83,4 +78,19 @@ class MovieTable extends Component {
   }
 }
 
-export default MovieTable;
+function mapStateToProps(state) {
+  return {
+    movies: state.movies
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    doFetchMovies: () => dispatch(fetchMovies())
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MovieTable);
